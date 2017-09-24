@@ -1,0 +1,16 @@
+aaaa
+
+<%= form_for @topic do |f| %>
+  <%= f.text_field :content, placeholder: "今なにしてる？" %>
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<% @topics.each do |topic| %>
+  <p>
+    <%= topic.content %>
+    <%= link_to "詳細", topic_path(topic.id) %>
+    <%= link_to "編集", edit_topic_path(topic.id) %>
+    <%= link_to "削除", topic_path(topic.id), method: :delete, data: {confirm: "削除しますか？"} %>
+  </p>
+
+<% end %>
